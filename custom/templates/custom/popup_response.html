@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>正在返回</title>
+
+</head>
+
+<body>
+
+<script>
+
+    (function () {
+        var id = '{{ obj.id }}';
+        var field ='{{ field  }}';
+        var data = '{{ data }}';
+        content = {'id':id,'field':field,'data':data};
+        window.opener.callback(content);
+        window.close();
+    })()
+
+</script>
+
+</body>
+</html>

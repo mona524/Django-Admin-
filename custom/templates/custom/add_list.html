@@ -1,0 +1,23 @@
+
+{% extends 'custom/layout.html' %}
+{% load static %}
+{% load custom_form %}
+
+{% block css %}
+    <style rel="stylesheet" href="{% static 'custom/css/form-control.css' %}"></style>
+{% endblock %}
+
+
+{% block breadcrumb %}
+    <ol class="breadcrumb">
+        <li><a href="#">首页</a></li>
+        <li class="active">添加数据</li>
+    </ol>
+{% endblock %}
+
+{% block content %}
+    {% show_form form %}
+{% endblock %}
+
+
+

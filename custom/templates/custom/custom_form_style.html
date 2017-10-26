@@ -1,0 +1,45 @@
+<form action="" class="form-horizontal" method="post" novalidate>
+    {% csrf_token %}
+    {% for f in form %}
+        <div class="form-group col-sm-6">
+            <lable class="col-sm-3 control-label"> {{ f.item.label }}</lable>
+            <div class="col-sm-9" style="position: relative" id="inputId">
+                {{ f.item }}
+                {{ f.item.errors.0 }}
+                {% if f.has_popup %}
+                    <a onclick="popup('{{ f.popup_url }}')">添加</a>
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+
+    <div class="form-group">
+        <div class="col-sm-offset-10 col-sm-2">
+            <input type="submit" class="btn btn-primary" value="确认添加"/>
+        </div>
+    </div>
+    <script>
+
+
+
+
+        function popup(url) {
+            window.open(url,url,"status=1, height:500, width:600, toolbar=0, resizeable=0")
+        }
+
+        function callback(content) {
+
+            var id = content.pk;
+            var field = content.field;
+            var data = content.data;
+            var tag= document.getElementById(field);
+            op = document.createElement('option');
+            op.innerHTML=data;
+            op.setAttribute('value',id);
+            op.setAttribute('selected','selected');
+            tag.append(op);
+        }
+
+    </script>
+
+</form>

@@ -1,0 +1,23 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加</title>
+     <link rel="stylesheet" href="/static/niubin/plugins/bootstrap/css/bootstrap.css" />
+
+</head>
+<body>
+<h1>删除页面</h1>
+
+<form action="" method="post">
+    {% csrf_token %}
+    <h2>请问是否删除 {{ obj }}</h2>
+    <button class="btn btn-warning" name="btn" value="true"> 是</button>
+    <button class="btn btn-primary" name="btn" value="false"> 否 </button>
+</form>
+
+
+
+</body>
+</html>

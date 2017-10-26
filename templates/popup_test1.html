@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1>页面</h1>
+<select name="" id="i1">
+    <option value="">上海</option>
+    <option value="">北京</option>
+</select>
+<input type="button" value="添加" onclick="PopFunc()">
+
+
+<script>
+    function PopFunc() {
+        window.open('/popup_test2/','/popup_test2/',"status=1, height:500, width:600, toolbar=0, resizeable=0")
+    }
+
+    function callback(name) {
+        var op = document.createElement('option');
+        op.innerHTML = name;
+        op.setAttribute('selected','selected');
+        document.getElementById('i1').appendChild(op)
+    }
+</script>
+</body>
+</html>

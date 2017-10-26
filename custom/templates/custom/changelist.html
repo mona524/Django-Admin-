@@ -1,0 +1,114 @@
+{% extends 'custom/layout.html' %}
+
+{% load list_data %}
+
+{% block css %}
+    <style>
+        .search-item a.active{
+            color: red;
+        }
+
+
+        .row {
+            margin: 5px 15px;
+        }
+
+        .combine-search .row .whole {
+            width: 60px;
+            float: left;
+
+        }
+
+        .combine-search .row .others {
+            padding-left: 60px;
+        }
+
+        .combine-search .row a {
+            display: inline-block;
+            padding: 5px 8px;
+            margin: 3px;
+            border: 1px solid #d4d4d4;
+
+        }
+
+        .combine-search .row a {
+            display: inline-block;
+            padding: 5px 8px;
+            margin: 3px;
+            border: 1px solid #d4d4d4;
+        }
+
+        .combine-search a.active {
+            color: #fff;
+            background-color: #337ab7;
+            border-color: #2e6da4;
+        }
+
+    </style>
+{% endblock %}
+
+
+{% block breadcrumb %}
+    <ol class="breadcrumb">
+        <li><a href="#">首页</a></li>
+        <li class="active">数据列表</li>
+    </ol>
+{% endblock %}
+
+
+{% block content %}
+     <div class="container">
+        <h1>数据列表</h1>
+
+        <div class="row search-item">
+
+            {% if cl.list_filter %}
+                <div class="combine-search">
+                    {% for row in cl.get_list_filter_data %}
+                        <div class="row">
+
+                           {% for foo in row %}
+                            {{ foo }}
+                            {% endfor %}
+
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+        </div>
+
+
+
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="row">
+                {% if cl.actions %}
+                     {% show_actions cl %}
+                 {% endif %}
+                {% if cl.model_config_obj.get_show_add_btn %}
+                    {{ cl.add_html }}
+                {% endif %}
+            </div>
+            <div class="row">
+                {% show_result_list cl %}
+            </div>
+
+            {{ cl.page_html }}
+
+
+        </form>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script>
+        $(function () {
+            $('#headCheckBox').click(function () {
+                $(this).parent().parent().parent().next().find(':checkbox').prop('checked', $(this).prop('checked'));
+            })
+
+        })
+
+    </script>
+{% endblock %}

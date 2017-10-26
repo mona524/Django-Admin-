@@ -1,0 +1,21 @@
+{% load static %}
+{% load custom_form %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{% static 'custom/plugins/bootstrap/css/bootstrap.css' %}"/>
+    <link rel="stylesheet" href="{% static 'custom/css/commons.css' %}"/>
+    {% block css %}{% endblock %}
+</head>
+<body>
+
+<div class="container">
+    <h3>添加数据</h3>
+    {% show_form form %}
+</div>
+
+</body>
+</html>
